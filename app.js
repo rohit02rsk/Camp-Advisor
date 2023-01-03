@@ -40,8 +40,6 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize());
 
-const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
-
 const store = MongoDBStore.create({
     mongoUrl: dbUrl,
     crypto: {
@@ -57,7 +55,7 @@ store.on('error', (e) => {
 const sessionConfig = {
     store,
     name: 'session',
-    secret,
+    secret: 'thishouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -103,7 +101,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-const port = process.env.PORT || 3000;
+const port = process.env.port || 3000;
 app.listen(port, () => {
-    console.log(`Serving on port ${port}`)
+    console.log(`Serving on PORT ${port}.`);
 })
