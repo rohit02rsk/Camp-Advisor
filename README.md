@@ -8,3 +8,4 @@ This is a Web application created using the MEN stack, MapBox, etc and is basica
 # Back-End technologies used:
 - Node.js
 - Express
+- MongoDB
